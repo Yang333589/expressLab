@@ -1,17 +1,19 @@
 const express = require('express'); //importing express
 const app = express(); //calling express as app
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) =>{
     console.log('Here');
-    res.render('index')
+    res.render('index', {text:'good afternoon'})
 });
 
-app.get('/potato', (req, res)=>{
-    res.send('<p> Here is your potatoes</p>')
+app.get('/users', (req, res)=>{
+    res.send('User List');
 });
 
-app.get('/status', (req,res)=>{
-    res.send('Page not found').sendStatus(404)
+app.get('/users/new', (req, res)=>{
+    res.send('User New Form');
 });
 
 app.listen(3030); //3030 is a port

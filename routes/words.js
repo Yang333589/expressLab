@@ -19,7 +19,7 @@ let getWordFromDictionary = async () =>{
     try{
         const data = await readFile('resources/allwords.txt', 'utf8');
         let lines = data.split('\n');
-        let ranNum = parseIn(Math.random() * lines.length);
+        let ranNum = parseInt(Math.random() * lines.length);
         let ranLine = lines[ranNum];
         let wordArray = ranLine.split('\t');
         console.log(wordArray);

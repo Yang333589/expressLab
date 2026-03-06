@@ -13,6 +13,21 @@ router.get('/wotd', async (req,res) =>{
     res.render('wotd', {word:word, part:part, def:def});
 });
 
+
+//Displays all the words in allwords.txt
+router.get('/allwords', async (req,res)=>{
+    const data = await readFile('resources/allwords.txt', 'utf8');
+    let lines = data.split('\n');
+    let allWord = "";
+    for (let i = 0; i < lines.length; i++){
+        let wordArray = lines[i].split('\t');
+        let [word, part, def] = wordArray;
+        allWord = allWord + word + " - " + part + "\n\t" + def + "\n\n";
+    }
+    res.render('allwords', {allWord:allWord});
+    
+});
+
 module.exports = router;
 
 let getWordFromDictionary = async () =>{
